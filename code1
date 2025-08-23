@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Laptop') {
+            steps {
+                cleanWs()
+                sh '''
+                echo "Building a laptop..."
+                mkdir -p build
+                sleep 1000
+                echo "start" > build/computer.txt
+                echo "end" >> build/computer.txt
+                cat build/computer.txt
+                
+                '''
+            }
+        }
+    }   
+    post {
+        success {
+            archiveArtifacts artifacts: 'build/**'
+        }
+    }
+}
+
+// tells use of stage, cleanWS , shell command execution method, archive artifacts.
