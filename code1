@@ -12,11 +12,8 @@ pipeline {
                 echo "Building a laptop..."
                 mkdir -p build
                 echo "start" > build/computer.txt
-                // learn : exit code 2 will through error and now allow any step to execute 
-                //exit 2 : i commented then code will execute completely
                 echo "end" >> build/computer.txt
                 cat build/computer.txt
-                //rm build/computer.txt : i will not remove file so that below step will find that file and second stage will also suceed.
                 '''
             }
         }
