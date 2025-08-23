@@ -9,7 +9,8 @@ pipeline {
             steps {
                 // Clean the workspace before starting
                 cleanWs()
-
+                // checking env variable extraction, in single quote it will not extract
+                echo '${BUILD_FILE_NAME}'
                 // Run shell commands to simulate build
                 sh '''
                 echo "Building a laptop..."
