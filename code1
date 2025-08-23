@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+    BUILD_FILE_NAME = 'laptop.txt'
+    }
 
     stages {
         stage('Build Laptop') {
@@ -11,9 +14,9 @@ pipeline {
                 sh '''
                 echo "Building a laptop..."
                 mkdir -p build
-                echo "start" > build/computer.txt
-                echo "end" >> build/computer.txt
-                cat build/computer.txt
+                echo "start" > build/${BUILD_FILE_NAME}
+                echo "end" >> build/${BUILD_FILE_NAME}
+                cat build/${BUILD_FILE_NAME}
                 '''
             }
         }
@@ -22,9 +25,9 @@ pipeline {
             steps {
                 // Test if the build artifact exists
                 sh '''
-                test -f build/computer.txt
+                test -f build/${BUILD_FILE_NAME}
                 echo "File exists!"
-                grep "end" build/computer.txt
+                grep "end" build/${BUILD_FILE_NAME}
                 '''
             }
         }
