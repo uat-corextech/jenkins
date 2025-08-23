@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                 test -f build/computer.txt
                 echo "File exists!"
-                grep "start" build/computer.txt
+                grep "end" build/computer.txt
                 '''
             }
         }
