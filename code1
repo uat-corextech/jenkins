@@ -12,7 +12,7 @@ pipeline {
                 echo "Building a laptop..."
                 mkdir -p build
                 echo "start" > build/computer.txt
-                #echo "end" >> build/computer.txt
+                echo "end" >> build/computer.txt
                 cat build/computer.txt
                 '''
             }
