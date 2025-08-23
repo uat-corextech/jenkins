@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Laptop') {
+            steps {
+                sh 'echo "Building a laptop..."'
+                sh 'mkdir -p build'
+            }
+        }
+    }   
+}
+
+// shell command execution method specifying sh all time.
