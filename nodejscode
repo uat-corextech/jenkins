@@ -17,6 +17,12 @@ pipeline {
                 docker {
                     // we can use any image below for container running
                     image 'node:18-alpine'
+                    //when i use below line i did not get two workspaces
+                    //i only get one workspace which is host one
+                    // and all the outcomes of both agent will come on host 
+                    // workspace
+                    // this is calles workspace synchronization
+                    reuseNode true
                 }
             }
             steps {
