@@ -34,11 +34,11 @@ pipeline {
         }
     }
 
-    post {
-        success {
+//  post {
+//        success {
             // Archive build artifacts for download/inspection
-            archiveArtifacts artifacts: 'build/**'
-        }
-    }
+//            archiveArtifacts artifacts: 'build/**'
+//        }
+//    }
 }
 
