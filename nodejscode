@@ -9,4 +9,4 @@ pipeline {
         }
     }
 }
-
+//npm not found error will get because npm not of this node
