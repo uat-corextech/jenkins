@@ -2,11 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('without docker') {
             steps {
-                sh 'npm --version'
+                sh 'echo "without docker"'
+            }
+        }
+        stage('With docker') {
+            //below is way to define docker container as agent on host
+            agent {
+                docker {
+                    // we can use any image below for container running
+                    image 'node:18-alpine'
+                }
+            }
+            steps {
+                sh 'echo "with docker"'
             }
         }
     }
 }
-//npm not found error will get because npm not of this node
