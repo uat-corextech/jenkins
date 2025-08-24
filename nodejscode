@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('without docker') {
             steps {
-                sh 'echo "without docker"'
+                sh '''
+                echo "without docker"
+                ls -la
+                touch host.txt
+                '''
             }
         }
         stage('With docker') {
@@ -16,10 +20,16 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "with docker"'
-                //below command will show npm version inside container
-                sh 'npm --version'
+                sh '''
+                echo "with docker"
+                ls -al
+                touch container.txt
+                '''
             }
         }
     }
 }
+// in this pipeline we also concluded that in workspaces section of 
+// build we can see both have different workspaces
+// and also first stage is run on host
+// second stage run on container
