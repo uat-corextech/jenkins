@@ -2,8 +2,9 @@ pipeline {
     agent any
     environment {
     BUILD_FILE_NAME = 'laptop.txt'
+    AUTH_TOCKEN = credentials('cred_id')   // ✅ correct helper
     }
-
+  // token can extract same way as variable
     stages {
         stage('Build Laptop') {
             steps {
