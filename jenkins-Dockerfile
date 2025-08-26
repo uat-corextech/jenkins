@@ -1,0 +1,52 @@
+########## jenkins dockerfile #################
+FROM jenkins/jenkins:lts
+
+# Switch to root user to install packages
+USER root
+
+# Set timezone environment variable
+ENV TZ=Asia/Kolkata
+
+# Install common dependencies, tzdata, and set timezone
+RUN apt-get update && apt-get install -y \
+    sudo \
+    git \
+    curl \
+    wget \
+    vim \
+    unzip \
+    make \
+    build-essential \
+    openjdk-17-jdk \
+    maven \
+    python3 python3-pip \
+    docker.io \
+    tzdata \
+    && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Switch back to Jenkins user
+USER jenkins
+
+###################### Build image #########################
+#docker image build -t jenkins-custom .
+
+############# manage ownership for jenkins user to run container properly ###################
+#sudo chown -R 1000:1000 /home/youruser/jenkins_data
+#sudo chmod -R 755 /home/youruser/jenkins_data
+
+################## command to run jenkins container ########################################
+
+#docker run -d \
+#  --name jenkins \
+#  -p 8080:8080 -p 50000:50000 \
+#  -v /home/youruser/jenkins_data:/var/jenkins_home \
+#  -v /var/run/docker.sock:/var/run/docker.sock \
+#  --restart unless-stopped \
+#  jenkins-custom:latest
+
+################################################################################
+
+
