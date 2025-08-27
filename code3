@@ -9,7 +9,10 @@ pipeline {
         }
         stage('approval') {
             steps {
-                input message: 'deploying to prod ? ready ?', ok: 'yes , i am sure i want to deploy'
+                timeout(time: 60, unit: 'SECONDS') {
+                    input message: 'deploying to prod ? ready ?', ok: 'yes , i am sure i want to deploy'
+                }
+
             }
         }
         stage('deploy') {
