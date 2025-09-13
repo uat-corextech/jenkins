@@ -34,8 +34,8 @@ USER jenkins
 #docker image build -t jenkins-custom .
 
 ############# manage ownership for jenkins user to run container properly ###################
-#sudo chown -R 1000:1000 /home/youruser/jenkins_data
-#sudo chmod -R 755 /home/youruser/jenkins_data
+#sudo chown -R 1000:1000 /opt/jenkins_data
+#sudo chmod -R 755 /opt/jenkins_data
 
 ################## command to run jenkins container ########################################
 
